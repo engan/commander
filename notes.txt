@@ -1,0 +1,27 @@
+dotnet new webapi -n Commander
+code -r Commander
+
+// Delete WeatherForecast.cs and Controllers/WeatherForecastController.cs
+
+dotnet add package Microsoft.EntityFrameworkCore
+dotnet add package Microsoft.EntityFrameworkCore.Design
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+
+// Check if EntityFramework installed
+dotnet ef
+
+dotnet ef migrations add InitialMigration
+
+// We want to change the model
+dotnet ef migrations remove
+
+dotnet ef migrations add InitialMigration
+dotnet ef database update
+
+dotnet build
+
+dotnet add package AutoMapper.Extensions.Microsoft.DependencyInjection
+
+dotnet add package Microsoft.AspNetCore.JsonPatch
+
+dotnet add package Microsoft.AspNetCore.Mvc.NewtonsoftJson
